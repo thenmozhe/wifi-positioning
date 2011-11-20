@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    <TextView
+        android:id="@+id/timestampTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dip" 
+        android:layout_marginTop="4dip" 
+        android:textSize="14dip"
+        android:text="Timestamp"
+        
+        >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/accessPointNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestampTextView"
+        android:textSize="14dip"
+        android:textStyle="bold"
+        android:text="Access Point MAC address"
+       
+        >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/signalLevelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dip"
+        android:layout_marginTop="4dip"
+        android:text="-30"
+        android:textColor="#24FF32"
+        android:textSize="14dip" >
+
+    </TextView>
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/signalLevelTextView"
+        android:layout_marginRight="2dip"
+        android:text="@string/n_a"
+        android:textColor="#5C57FF"
+        android:textSize="14dip" >
+
+    </TextView>
+
+    
+
+</RelativeLayout>

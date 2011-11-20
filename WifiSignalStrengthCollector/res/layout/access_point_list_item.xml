@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/wifiImageView"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:src="@drawable/wifi" 
+        android:layout_alignParentLeft="true"
+        >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/accessPointNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip" 
+        android:textSize="18dip"
+        android:text="Access Point MAC address"
+        android:layout_centerHorizontal="true"
+        >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/signalLevelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dip"
+        android:layout_marginTop="4dip"
+        android:text="-30"
+        android:textColor="#24FF32"
+        android:textSize="14dip" >
+
+    </TextView>
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/signalLevelTextView"
+        android:layout_marginRight="2dip"
+        android:text="@string/n_a"
+        android:textColor="#5C57FF"
+        android:textSize="14dip" >
+
+    </TextView>
+
+    
+
+</RelativeLayout>
