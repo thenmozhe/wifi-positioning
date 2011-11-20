@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">WifiSignalStrengthCollector</string>
+    <string name="scan">Scan</string>
+    <string name="save">Save</string>
+    <string name="report">Report</string>
+    <string name="scanning">Scanning...</string>
+    <string name="done">Done!</string>
+    <string name="distance">Distance (m)</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="n_a">N/A</string>
+    <string name="distance_to">Distance to</string>
+    <string name="access_point_has_been_aved">Access Point(s) has been saved.</string>
+    <string name="distance_has_been_updated">Distance has been updated</string>
+
+</resources>
