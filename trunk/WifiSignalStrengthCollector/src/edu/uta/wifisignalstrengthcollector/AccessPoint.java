@@ -9,7 +9,15 @@ public class AccessPoint {
 	int distance;
 	Date timestamp; 
 	int id; 
+	String SSID; 
 	
+	
+	public String getSSID() {
+		return SSID;
+	}
+	public void setSSID(String SSID) {
+		this.SSID = SSID;
+	}
 	public int getId() {
 		return id;
 	}

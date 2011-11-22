@@ -22,6 +22,7 @@
         android:layout_centerHorizontal="true"
         >
     </TextView>
+
     
     <TextView
         android:id="@+id/signalLevelTextView"
