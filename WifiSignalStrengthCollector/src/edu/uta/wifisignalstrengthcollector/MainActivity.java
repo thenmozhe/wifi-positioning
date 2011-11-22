@@ -66,7 +66,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
 					WifiManager.WIFI_MODE_SCAN_ONLY,
 					"WifiSignalStrengthCollector");
 			wifiLock.acquire();
-
+			wifiManager.setWifiEnabled(true);
 			publishProgress("Scanning...");
 
 			wifiManager.startScan();
@@ -80,6 +80,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
 				for (ScanResult scanResult : scanResults) {
 					AccessPoint ap = new AccessPoint();
 					ap.setMacAddress(scanResult.BSSID);
+					ap.setSSID(scanResult.SSID);
 					ap.setSignalLevel(scanResult.level);
 					ap.setTimestamp(new Date());
 					accessPoints.add(ap);
@@ -97,7 +98,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
 
 		@Override
 		protected void onPostExecute(ArrayList<AccessPoint> result) {
-			accessPoints = result; 
+			accessPoints = result;
 			AccessPointArrayAdapter adapter = new AccessPointArrayAdapter(
 					MainActivity.this, accessPoints);
 			setListAdapter(adapter);
@@ -126,13 +127,14 @@ public class MainActivity extends ListActivity implements OnClickListener {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			LayoutInflater inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			final View rowView = inflater.inflate(R.layout.access_point_list_item,
-					parent, false);
+			final View rowView = inflater.inflate(
+					R.layout.access_point_list_item, parent, false);
 			final AccessPoint accessPoint = accessPoints.get(position);
 
 			TextView accessPointNameTextView = (TextView) rowView
 					.findViewById(R.id.accessPointNameTextView);
-			accessPointNameTextView.setText(accessPoint.getMacAddress());
+			accessPointNameTextView.setText(accessPoint.getMacAddress() + " ("
+					+ accessPoint.getSSID() + ")");
 
 			TextView signalLevelTextView = (TextView) rowView
 					.findViewById(R.id.signalLevelTextView);
@@ -148,7 +150,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
 				@Override
 				public void onClick(View v) {
 					rowView.setBackgroundColor(Color.YELLOW);
-					
+
 					LayoutInflater factory = LayoutInflater
 							.from(MainActivity.this);
 					final View textEntryView = factory.inflate(
@@ -169,7 +171,11 @@ public class MainActivity extends ListActivity implements OnClickListener {
 							.setTitle(
 									getResources().getString(
 											R.string.distance_to)
-											+ " " + accessPoint.getMacAddress())
+											+ " "
+											+ accessPoint.getMacAddress()
+											+ " ("
+											+ accessPoint.getSSID()
+											+ ")")
 							.setView(textEntryView)
 							.setPositiveButton(R.string.ok,
 									new DialogInterface.OnClickListener() {
@@ -188,20 +194,24 @@ public class MainActivity extends ListActivity implements OnClickListener {
 													.valueOf(distance));
 											accessPoint.setDistance(distance);
 											Toast.makeText(
-													MainActivity.this.getApplicationContext(),
+													MainActivity.this
+															.getApplicationContext(),
 													R.string.distance_has_been_updated,
 													Toast.LENGTH_LONG);
 										}
-									}).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-										
-										@Override
-										public void onClick(DialogInterface dialog, int which) {
-											rowView.setBackgroundColor(Color.BLACK);
-											
-										}
 									})
-							.create().show();
-					
+							.setNegativeButton(R.string.cancel,
+									new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											rowView.setBackgroundColor(Color.BLACK);
+
+										}
+									}).create().show();
+
 				}
 			});
 			return rowView;
@@ -212,14 +222,14 @@ public class MainActivity extends ListActivity implements OnClickListener {
 
 	Button saveButton;
 	Button startButton;
-	Button reportButton; 
+	Button reportButton;
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.saveButton:
 			save();
-			//intentionally no break to continue to the next case 
+			// intentionally no break to continue to the next case
 		case R.id.startButton:
 			new WifiScanningAsyncTask().execute((Void[]) null);
 
@@ -240,8 +250,8 @@ public class MainActivity extends ListActivity implements OnClickListener {
 		int successCount = 0;
 		for (AccessPoint ap : accessPoints) {
 			if (ap.getDistance() > 0) {
-				int id =model.create(ap); 
-				if(  id > 0 ) {
+				int id = model.create(ap);
+				if (id > 0) {
 					successCount++;
 				}
 			}
@@ -251,10 +261,10 @@ public class MainActivity extends ListActivity implements OnClickListener {
 		model.getDatabase().endTransaction();
 		model.close();
 
-		Toast.makeText(getApplicationContext(), String.valueOf(successCount) + " " + R.string.access_point_has_been_aved,
-				Toast.LENGTH_LONG);
+		Toast.makeText(getApplicationContext(), String.valueOf(successCount)
+				+ " " + R.string.access_point_has_been_aved, Toast.LENGTH_LONG);
 
-		return successCount; 
+		return successCount;
 	}
 
 }
