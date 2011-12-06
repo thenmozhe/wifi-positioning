@@ -262,7 +262,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
 		model.close();
 
 		Toast.makeText(getApplicationContext(), String.valueOf(successCount)
-				+ " " + R.string.access_point_has_been_aved, Toast.LENGTH_LONG);
+				+ " " + R.string.access_point_has_been_saved, Toast.LENGTH_LONG);
 
 		return successCount;
 	}

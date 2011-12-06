@@ -133,12 +133,15 @@ public class HomeActivity extends Activity {
 
 							if (knownAPs[i].getMacAddress().toLowerCase()
 									.compareTo(scanResult.BSSID.toLowerCase()) == 0) {
-								publishProgress("found AP Mac Address = "
-										+ scanResult.BSSID + " at "
-										+ knownAPs[i].getCoordinates());
+								
 								knownAPs[i].setSignalLevel(scanResult.level);
 								knownAPs[i].setSSID(scanResult.SSID);
 								knownAPs[i].setTimestamp(new Date());
+								
+								publishProgress("found AP Mac Address = "
+										+ scanResult.BSSID + " at "
+										+ knownAPs[i].getCoordinates() + " with distance = " + knownAPs[i].getDistance());
+								
 								break;
 							}
 						}
