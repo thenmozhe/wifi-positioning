@@ -34,7 +34,7 @@ public final class R {
         public static final int report_list_item=0x7f030005;
     }
     public static final class string {
-        public static final int access_point_has_been_aved=0x7f04000c;
+        public static final int access_point_has_been_saved=0x7f04000c;
         public static final int app_name=0x7f040001;
         public static final int cancel=0x7f040009;
         public static final int distance=0x7f040007;

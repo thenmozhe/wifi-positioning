@@ -13,7 +13,7 @@
     <string name="cancel">Cancel</string>
     <string name="n_a">N/A</string>
     <string name="distance_to">Distance to</string>
-    <string name="access_point_has_been_aved">Access Point(s) has been saved.</string>
+    <string name="access_point_has_been_saved">Access Point(s) has been saved.</string>
     <string name="distance_has_been_updated">Distance has been updated</string>
 
 </resources>
