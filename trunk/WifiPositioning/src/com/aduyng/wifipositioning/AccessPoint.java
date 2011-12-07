@@ -64,7 +64,8 @@ public class AccessPoint {
 	}
 	
 	public double getDistance() {
-		return signalStrengthToDistanceRatio*(100+signalLevel);
+		return signalLevel*50;
+		//return signalStrengthToDistanceRatio*(100+signalLevel);
 	}
 
 }
